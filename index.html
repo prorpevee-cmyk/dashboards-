@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Dashboard Souk</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --gold: #C4A265;
+  --gold-soft: rgba(196, 162, 101, 0.4);
+  --gold-bg: rgba(196, 162, 101, 0.08);
+  --gold-tag: rgba(196, 162, 101, 0.12);
+  --gold-strong: rgba(196, 162, 101, 0.18);
+  --black: #1A1A1A;
+  --white: #FFFFFF;
+  --gray-line: #EBEBEB;
+  --gray-bg: #F8F8F6;
+  --gray-text: #6B6B6B;
+  --gray-soft: #A8A8A8;
+  --green: #2E7D4F;
+  --green-bg: rgba(46, 125, 79, 0.08);
+  --red: #C0392B;
+  --red-bg: rgba(192, 57, 43, 0.08);
+  --serif: 'Cormorant Garamond', serif;
+  --sans: 'DM Sans', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+body {
+  font-family: var(--sans);
+  background: var(--white);
+  color: var(--black);
+  font-size: 15px;
+  line-height: 1.6;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+}
+
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 60px 40px;
+}
+
+/* === HEADER === */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: 32px;
+  border-bottom: 1px solid var(--gray-line);
+  margin-bottom: 48px;
+}
+
+.souk-logo-mark {
+  display: block;
+  height: 36px;
+  width: auto;
+  margin-bottom: 18px;
+}
+
+.souk-logo-footer {
+  display: block;
+  height: 38px;
+  width: auto;
+  margin: 0 auto 12px;
+  opacity: 0.85;
+}
+
+.header-left h1 {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 500;
+  line-height: 1.1;
+  color: var(--black);
+  letter-spacing: -0.5px;
+}
+
+.header-left h1 em {
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 400;
+}
+
+.header-left .subtitle {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--gray-text);
+  margin-top: 12px;
+  font-weight: 400;
+}
+
+.header-right {
+  text-align: right;
+  font-size: 12px;
+  color: var(--gray-soft);
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.header-right .period {
+  margin-top: 6px;
+  font-size: 13px;
+  color: var(--black);
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0;
+}
+
+/* === TABS === */
+.tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--gray-line);
+  margin-bottom: 56px;
+  position: sticky;
+  top: 0;
+  background: var(--white);
+  z-index: 10;
+  padding-top: 4px;
+}
+
+.tab {
+  padding: 18px 32px 18px 0;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray-soft);
+  background: none;
+  border: none;
+  cursor: pointer;
+  position: relative;
+  transition: color .25s ease;
+  margin-right: 32px;
+}
+
+.tab:hover:not(.active):not(:disabled) { color: var(--black); }
+.tab.active { color: var(--black); }
+
+.tab.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 32px;
+  bottom: -1px;
+  height: 2px;
+  background: var(--gold);
+}
+
+.tab .tab-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 16px;
+  margin-right: 8px;
+  color: var(--gold);
+}
+
+.tab-pane {
+  display: none;
+  animation: fadeIn .35s ease;
+}
+
+.tab-pane.active { display: block; }
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* === MANCHETE === */
+.manchete {
+  background: var(--gold-bg);
+  border-left: 3px solid var(--gold);
+  padding: 36px 40px;
+  margin-bottom: 56px;
+}
+
+.manchete-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.manchete-number {
+  font-family: var(--serif);
+  font-size: 88px;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--black);
+  letter-spacing: -2px;
+}
+
+.manchete-number sup {
+  font-size: 36px;
+  color: var(--green);
+  font-weight: 600;
+  vertical-align: top;
+  margin-left: 6px;
+}
+
+.manchete-title {
+  font-family: var(--serif);
+  font-size: 26px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--black);
+  margin-top: 8px;
+  margin-bottom: 20px;
+}
+
+.manchete-body {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--black);
+  max-width: 720px;
+}
+
+.manchete-body strong { font-weight: 600; }
+
+.manchete-comparison {
+  display: flex;
+  gap: 32px;
+  margin-top: 24px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gold-soft);
+}
+
+.manchete-comparison div { flex: 1; }
+
+.manchete-comparison .label {
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  margin-bottom: 6px;
+}
+
+.manchete-comparison .value {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--black);
+}
+
+/* === SECTION === */
+.section-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: var(--black);
+}
+
+.section-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.section-subtitle {
+  font-size: 13px;
+  color: var(--gray-text);
+  margin-bottom: 32px;
+  letter-spacing: 0.3px;
+}
+
+.section { margin-bottom: 64px; }
+
+/* === METRICS === */
+.metrics-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--gray-line);
+  border-left: 1px solid var(--gray-line);
+}
+
+.metric {
+  border-right: 1px solid var(--gray-line);
+  border-bottom: 1px solid var(--gray-line);
+  padding: 32px 28px;
+  background: var(--white);
+  transition: background .2s ease;
+}
+
+.metric:hover { background: var(--gray-bg); }
+
+.metric-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 20px;
+}
+
+.metric-label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  font-weight: 500;
+}
+
+.metric-delta {
+  font-size: 12px;
+  font-weight: 600;
+  padding: 3px 10px;
+  border-radius: 100px;
+}
+
+.metric-delta.up { color: var(--green); background: var(--green-bg); }
+.metric-delta.down { color: var(--red); background: var(--red-bg); }
+.metric-delta.neutral { color: var(--gray-text); background: var(--gray-bg); }
+
+.metric-number {
+  font-family: var(--serif);
+  font-size: 56px;
+  line-height: 1;
+  font-weight: 500;
+  color: var(--black);
+  letter-spacing: -1px;
+  margin-bottom: 16px;
+}
+
+.metric-explain {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--black);
+  padding: 14px 0;
+  border-top: 1px solid var(--gray-line);
+}
+
+.metric-explain strong { font-weight: 600; }
+
+.metric-insight {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--gray-text);
+  padding-top: 14px;
+  border-top: 1px dashed var(--gray-line);
+  font-style: italic;
+}
+
+.metric-insight::before {
+  content: '↳ ';
+  color: var(--gold);
+  font-style: normal;
+  margin-right: 4px;
+}
+
+.metric-previous {
+  font-size: 11px;
+  color: var(--gray-soft);
+  margin-top: -10px;
+  margin-bottom: 16px;
+  letter-spacing: 0.5px;
+}
+
+/* === TOP CONTENT === */
+.top-content {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+}
+
+.top-card {
+  border: 1px solid var(--gray-line);
+  border-radius: 10px;
+  padding: 28px 30px;
+  position: relative;
+  transition: border-color .2s ease;
+}
+
+.top-card:hover { border-color: var(--gold-soft); }
+
+.top-card-label {
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 12px;
+}
+
+.top-card-format {
+  display: inline-block;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--gold-bg);
+  color: var(--gold);
+  margin-bottom: 14px;
+}
+
+.top-card-title {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+  font-style: italic;
+  line-height: 1.3;
+  color: var(--black);
+  margin-bottom: 14px;
+}
+
+.top-card-author {
+  font-size: 12px;
+  color: var(--gray-text);
+  margin-bottom: 24px;
+}
+
+.top-card-stats {
+  display: flex;
+  gap: 32px;
+  padding-top: 20px;
+  border-top: 1px solid var(--gray-line);
+}
+
+.top-card-stat .num {
+  font-family: var(--serif);
+  font-size: 32px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1;
+  letter-spacing: -0.5px;
+}
+
+.top-card-stat .label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  margin-top: 6px;
+  font-weight: 500;
+}
+
+.top-card-stat .pct {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 28px;
+  color: var(--gold);
+  font-weight: 500;
+  line-height: 1;
+}
+
+/* === ALERT BLOCK (problema dos 0 cliques) === */
+.alerta-zero-cliques {
+  background: #FFF8E5;
+  border: 1px solid #E8C76B;
+  border-radius: 10px;
+  padding: 32px 36px;
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 24px;
+  align-items: start;
+  margin-top: 32px;
+}
+
+.alerta-zero-num {
+  font-family: var(--serif);
+  font-size: 80px;
+  font-weight: 500;
+  color: #B88A1F;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.alerta-zero-content h4 {
+  font-family: var(--serif);
+  font-size: 24px;
+  font-weight: 600;
+  font-style: italic;
+  color: #6E4F0A;
+  margin-bottom: 12px;
+  line-height: 1.3;
+}
+
+.alerta-zero-content p {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #4D3805;
+}
+
+.alerta-zero-content p strong { font-weight: 600; }
+
+/* === FOLLOWERS COMPARISON === */
+.followers-block {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.follower-card {
+  border: 1px solid var(--gray-line);
+  border-radius: 10px;
+  padding: 26px 24px;
+  text-align: center;
+}
+
+.follower-card.primary {
+  background: var(--gold-bg);
+  border-color: var(--gold-soft);
+}
+
+.follower-card .num {
+  font-family: var(--serif);
+  font-size: 44px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1;
+  margin-bottom: 8px;
+  letter-spacing: -1px;
+}
+
+.follower-card.primary .num {
+  color: var(--gold);
+}
+
+.follower-card .label {
+  font-size: 12px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  font-weight: 500;
+}
+
+/* === SÍNTESE === */
+.leitura {
+  background: var(--black);
+  color: var(--white);
+  border-radius: 12px;
+  padding: 48px 44px;
+  margin-top: 48px;
+}
+
+.leitura-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 18px;
+}
+
+.leitura h3 {
+  font-family: var(--serif);
+  font-size: 30px;
+  font-weight: 500;
+  line-height: 1.25;
+  margin-bottom: 24px;
+  color: var(--white);
+}
+
+.leitura h3 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.leitura-body {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.leitura-body strong {
+  color: var(--white);
+  font-weight: 600;
+}
+
+.leitura-body p + p { margin-top: 16px; }
+
+/* === PONTE === */
+.ponte {
+  margin-top: 80px;
+  padding: 48px 0 0;
+  border-top: 1px solid var(--gray-line);
+}
+
+.ponte-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  color: var(--gold);
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+
+.ponte h3 {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 24px;
+  max-width: 760px;
+}
+
+.ponte h3 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.cause-effect {
+  margin-top: 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cause-effect-row {
+  display: grid;
+  grid-template-columns: 1fr 50px 1fr;
+  gap: 20px;
+  align-items: stretch;
+}
+
+.cause, .effect {
+  border: 1px solid var(--gray-line);
+  border-radius: 10px;
+  padding: 22px 24px;
+  background: var(--white);
+}
+
+.cause { border-left: 3px solid var(--gold); }
+
+.effect {
+  background: var(--gold-bg);
+  border-color: var(--gold-soft);
+}
+
+.cause-label, .effect-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.cause-text, .effect-text {
+  font-family: var(--serif);
+  font-size: 18px;
+  line-height: 1.4;
+  color: var(--black);
+  font-weight: 500;
+}
+
+.cause-text em, .effect-text em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.cause-effect-arrow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--serif);
+  font-size: 32px;
+  color: var(--gold);
+  font-style: italic;
+}
+
+.effect-posts {
+  margin-top: 12px;
+  font-size: 11px;
+  color: var(--gray-text);
+}
+
+.effect-posts span {
+  display: inline-block;
+  background: var(--white);
+  color: var(--gold);
+  padding: 3px 9px;
+  border-radius: 100px;
+  margin-right: 6px;
+  font-weight: 600;
+  border: 1px solid var(--gold-soft);
+}
+
+.ponte-cta {
+  margin-top: 40px;
+  padding: 24px 28px;
+  background: var(--black);
+  color: var(--white);
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  transition: background .2s ease;
+}
+
+.ponte-cta:hover { background: #2a2a2a; }
+
+.ponte-cta-text { flex: 1; }
+
+.ponte-cta-text .label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 4px;
+}
+
+.ponte-cta-text h4 {
+  font-family: var(--serif);
+  font-size: 22px;
+  font-weight: 500;
+}
+
+.ponte-cta-arrow {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-style: italic;
+  color: var(--gold);
+}
+
+/* === ABA 2 — TRÁFEGO PAGO === */
+.trafego-intro {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--black);
+  max-width: 760px;
+  margin-bottom: 40px;
+}
+
+.trafego-intro strong { font-weight: 600; }
+
+.trafego-numbers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 0;
+  border-top: 1px solid var(--gray-line);
+  border-left: 1px solid var(--gray-line);
+  margin-bottom: 32px;
+}
+
+.trafego-num-item {
+  border-right: 1px solid var(--gray-line);
+  border-bottom: 1px solid var(--gray-line);
+  padding: 22px 18px;
+}
+
+.trafego-num-item .label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.trafego-num-item .num {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1;
+  margin-bottom: 6px;
+  letter-spacing: -0.5px;
+}
+
+.trafego-num-item .delta {
+  font-size: 11px;
+  font-weight: 600;
+}
+
+.delta-up { color: var(--green); }
+.delta-down { color: var(--red); }
+
+.trafego-diagnosis-header {
+  margin-bottom: 24px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid var(--gray-line);
+}
+
+.trafego-diagnosis-header h4 {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--black);
+}
+
+.trafego-diagnosis-header h4 em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.diagnosis-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  margin-bottom: 48px;
+}
+
+.diagnosis-card {
+  border: 1px solid var(--gray-line);
+  border-radius: 10px;
+  padding: 26px 30px;
+  background: var(--white);
+  border-left: 3px solid var(--gold);
+  transition: border-color .2s ease;
+}
+
+.diagnosis-card:hover {
+  border-color: var(--gold-soft);
+  border-left-color: var(--gold);
+}
+
+.diagnosis-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--gray-line);
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.diagnosis-card-title {
+  font-family: var(--serif);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--black);
+  line-height: 1.3;
+}
+
+.diagnosis-card-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.diagnosis-card-tag {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 4px 10px;
+  border-radius: 100px;
+  background: var(--gold-bg);
+  color: var(--gold);
+  white-space: nowrap;
+}
+
+.diagnosis-card-tag.warning {
+  background: #FFF8E5;
+  color: #B88A1F;
+}
+
+.diagnosis-card-tag.positive {
+  background: var(--green-bg);
+  color: var(--green);
+}
+
+.diagnosis-card-tag.alert {
+  background: var(--red-bg);
+  color: var(--red);
+}
+
+.diagnosis-card p {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--black);
+}
+
+.diagnosis-card p + p { margin-top: 10px; }
+
+.diagnosis-card p strong { font-weight: 600; }
+
+.diagnosis-recommendation {
+  margin-top: 14px;
+  padding: 12px 16px;
+  background: var(--gold-bg);
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--black);
+}
+
+.diagnosis-recommendation strong { color: var(--gold); font-weight: 600; }
+
+@media (max-width: 768px) {
+  .diagnosis-card { padding: 22px 22px; }
+  .diagnosis-card-title { font-size: 17px; }
+  .diagnosis-card-header { flex-direction: column; align-items: flex-start; }
+}
+
+/* TESTES LADO A LADO */
+.testes-section {
+  margin-top: 48px;
+}
+
+.teste-block {
+  margin-bottom: 48px;
+  padding-bottom: 48px;
+  border-bottom: 1px solid var(--gray-line);
+}
+
+.teste-block:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.teste-header {
+  margin-bottom: 24px;
+}
+
+.teste-num {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gold);
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+.teste-title {
+  font-family: var(--serif);
+  font-size: 28px;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--black);
+}
+
+.teste-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+
+.teste-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+.teste-single {
+  display: block;
+}
+
+.teste-single .teste-version {
+  max-width: 100%;
+}
+
+.teste-version {
+  border: 1px solid var(--gray-line);
+  border-radius: 10px;
+  padding: 28px 28px;
+  background: var(--white);
+}
+
+.teste-version.original {
+  border-color: var(--gray-line);
+}
+
+.teste-version.adjusted {
+  border-color: var(--gold-soft);
+  background: var(--gold-bg);
+}
+
+.teste-version-label {
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 16px;
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 100px;
+}
+
+.teste-version.original .teste-version-label {
+  color: var(--gray-text);
+  background: var(--gray-bg);
+}
+
+.teste-version.adjusted .teste-version-label {
+  color: var(--gold);
+  background: var(--white);
+  border: 1px solid var(--gold-soft);
+}
+
+.teste-field {
+  margin-bottom: 16px;
+}
+
+.teste-field-label {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.teste-field-value {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--black);
+}
+
+.teste-field-value strong { font-weight: 600; }
+
+.teste-field-value em {
+  font-style: italic;
+  color: var(--gray-text);
+}
+
+.teste-cta {
+  margin-top: 16px;
+  padding: 14px 18px;
+  background: var(--black);
+  color: var(--white);
+  border-radius: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  font-style: italic;
+}
+
+.teste-version.adjusted .teste-cta {
+  background: var(--gold);
+}
+
+.teste-justify {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px dashed var(--gold-soft);
+  font-size: 12px;
+  color: var(--gray-text);
+  line-height: 1.55;
+  font-style: italic;
+}
+
+.teste-justify strong { color: var(--black); font-weight: 600; }
+
+/* === ABA 3 — PLANEJAMENTO === */
+.planning-intro {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--black);
+  max-width: 760px;
+  margin-bottom: 32px;
+}
+
+.planning-stats {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0;
+  margin-bottom: 48px;
+  padding: 28px 0;
+  border-top: 1px solid var(--gray-line);
+  border-bottom: 1px solid var(--gray-line);
+}
+
+.planning-stat {
+  text-align: center;
+  border-right: 1px solid var(--gray-line);
+}
+
+.planning-stat:last-child { border-right: none; }
+
+.planning-stat .num {
+  font-family: var(--serif);
+  font-size: 36px;
+  font-weight: 500;
+  color: var(--gold);
+  line-height: 1;
+  font-style: italic;
+}
+
+.planning-stat .label {
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  margin-top: 8px;
+}
+
+/* SEMANA HEADER */
+.semana-header {
+  font-family: var(--serif);
+  font-size: 20px;
+  font-weight: 500;
+  font-style: italic;
+  color: var(--gold);
+  margin-top: 32px;
+  margin-bottom: 14px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--gold-soft);
+}
+
+.semana-header:first-of-type { margin-top: 0; }
+
+.semana-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  font-weight: 500;
+  font-style: normal;
+  display: block;
+  margin-top: 4px;
+}
+
+.content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.content-card {
+  border: 1px solid rgba(46, 125, 79, 0.3);
+  border-radius: 10px;
+  padding: 22px 26px;
+  background: rgba(46, 125, 79, 0.02);
+  transition: border-color .2s ease;
+}
+
+.content-card.alyne-slot {
+  border-color: var(--gold-soft);
+  background: var(--gold-bg);
+  border-style: dashed;
+}
+
+.content-card:hover { border-color: rgba(46, 125, 79, 0.5); }
+.content-card.alyne-slot:hover { border-color: var(--gold); }
+
+.content-card.expanded {
+  border-color: rgba(46, 125, 79, 0.5);
+}
+
+.content-card.alyne-slot.expanded {
+  border-color: var(--gold);
+}
+
+.content-card.rejected {
+  border-color: rgba(192, 57, 43, 0.4);
+  background: rgba(192, 57, 43, 0.03);
+  border-style: solid;
+}
+
+.card-header {
+  display: grid;
+  grid-template-columns: 28px 70px 1fr auto auto;
+  align-items: center;
+  gap: 14px;
+  cursor: pointer;
+}
+
+.card-status-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--green);
+}
+
+.content-card.alyne-slot .card-status-dot {
+  background: var(--gold);
+}
+
+.content-card.rejected .card-status-dot {
+  background: var(--red);
+}
+
+.card-date {
+  font-family: var(--serif);
+  font-size: 14px;
+  font-style: italic;
+  color: var(--gold);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.card-title {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--black);
+  line-height: 1.4;
+}
+
+.card-format {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.format-tag {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: var(--gray-text);
+  font-weight: 500;
+  padding: 4px 10px;
+  background: var(--gray-bg);
+  border-radius: 100px;
+  white-space: nowrap;
+}
+
+.format-tag.approved-tag {
+  background: var(--green);
+  color: var(--white);
+}
+
+.format-tag.alyne-tag {
+  background: var(--gold);
+  color: var(--white);
+}
+
+.format-tag.namorados-tag {
+  background: #C0392B;
+  color: var(--white);
+}
+
+.format-tag.junina-tag {
+  background: #B88A1F;
+  color: var(--white);
+}
+
+.card-toggle {
+  font-family: var(--serif);
+  font-style: italic;
+  color: var(--gold);
+  font-size: 18px;
+  transition: transform .25s ease;
+  user-select: none;
+}
+
+.content-card.expanded .card-toggle {
+  transform: rotate(180deg);
+}
+
+.card-body {
+  display: none;
+  padding-top: 22px;
+  margin-top: 22px;
+  border-top: 1px solid rgba(46, 125, 79, 0.15);
+}
+
+.content-card.alyne-slot .card-body {
+  border-top-color: var(--gold-soft);
+}
+
+.content-card.expanded .card-body {
+  display: block;
+}
+
+.responds-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--gold-tag);
+  color: var(--gold);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 6px 12px;
+  border-radius: 100px;
+  margin-bottom: 16px;
+}
+
+.responds-badge::before {
+  content: '✦';
+  font-size: 10px;
+}
+
+.angle-label {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 10px;
+}
+
+.angle-text {
+  font-size: 14px;
+  line-height: 1.65;
+  color: var(--black);
+  margin-bottom: 20px;
+}
+
+.angle-text strong { font-weight: 600; }
+
+.alyne-instruction {
+  background: var(--white);
+  border: 1px dashed var(--gold);
+  border-radius: 8px;
+  padding: 18px 20px;
+  margin-bottom: 20px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--black);
+}
+
+.alyne-instruction strong { font-weight: 600; color: var(--gold); }
+
+/* APROVAÇÃO BUTTONS */
+.card-actions {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.action-btn {
+  font-family: var(--sans);
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  padding: 10px 20px;
+  border: 1px solid var(--gray-line);
+  background: var(--white);
+  color: var(--gray-text);
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.action-btn:hover {
+  border-color: var(--black);
+  color: var(--black);
+}
+
+.action-btn.approve.active {
+  background: var(--green);
+  border-color: var(--green);
+  color: var(--white);
+}
+
+.action-btn.reject.active {
+  background: var(--red);
+  border-color: var(--red);
+  color: var(--white);
+}
+
+.feedback-area {
+  width: 100%;
+  margin-top: 14px;
+  padding: 14px 16px;
+  border: 1px solid var(--gray-line);
+  border-radius: 8px;
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--black);
+  resize: vertical;
+  min-height: 70px;
+  display: none;
+  outline: none;
+  transition: border-color .2s ease;
+}
+
+.feedback-area:focus { border-color: var(--gold); }
+
+.content-card.rejected .feedback-area { display: block; }
+
+/* VÍDEOS PENDENTES */
+.videos-pending-section {
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--gray-line);
+}
+
+.videos-pending-label {
+  display: inline-block;
+  background: var(--gold-tag);
+  color: var(--gold);
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  padding: 6px 14px;
+  border-radius: 100px;
+  margin-bottom: 24px;
+  font-style: italic;
+  font-family: var(--serif);
+  text-transform: none;
+}
+
+.videos-pending-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.video-pending-item {
+  display: grid;
+  grid-template-columns: 22px 60px 1fr auto;
+  align-items: center;
+  gap: 16px;
+  padding: 16px 22px;
+  border: 1px solid var(--gray-line);
+  border-radius: 10px;
+  background: var(--white);
+  transition: border-color .2s ease;
+}
+
+.video-pending-item:hover {
+  border-color: var(--gold-soft);
+}
+
+.video-pending-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #D5D5D5;
+  margin-left: 4px;
+}
+
+.video-pending-format {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gray-text);
+  font-weight: 500;
+}
+
+.video-pending-title {
+  font-family: var(--sans);
+  font-size: 14px;
+  color: var(--black);
+  line-height: 1.4;
+}
+
+.video-pending-status {
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 5px 12px;
+  border-radius: 100px;
+  background: var(--gold-bg);
+  color: var(--gold);
+  border: 1px solid var(--gold-soft);
+  white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+  .video-pending-item {
+    grid-template-columns: 18px 1fr auto;
+    gap: 10px;
+    padding: 14px 18px;
+  }
+  .video-pending-format { display: none; }
+}
+
+/* COPY FEEDBACK */
+.copy-feedback-section {
+  text-align: center;
+  margin-top: 56px;
+  padding-top: 40px;
+  border-top: 1px solid var(--gray-line);
+}
+
+.copy-feedback-btn {
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 18px 48px;
+  background: var(--gold);
+  color: var(--white);
+  border: none;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all .25s ease;
+}
+
+.copy-feedback-btn:hover {
+  background: var(--black);
+  transform: translateY(-1px);
+}
+
+.copy-hint {
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 14px;
+  color: var(--gray-text);
+  margin-top: 14px;
+}
+
+/* === FOOTER === */
+.footer {
+  text-align: center;
+  padding: 60px 0 0;
+  margin-top: 80px;
+  border-top: 1px solid var(--gray-line);
+}
+
+.footer-meta {
+  font-size: 11px;
+  color: var(--gray-soft);
+  margin-top: 8px;
+  letter-spacing: 0.5px;
+}
+
+/* === TOAST === */
+.toast {
+  position: fixed;
+  bottom: 32px;
+  left: 50%;
+  transform: translateX(-50%) translateY(120%);
+  background: var(--black);
+  color: var(--white);
+  padding: 14px 28px;
+  border-radius: 100px;
+  font-size: 13px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  font-weight: 500;
+  transition: transform .35s cubic-bezier(0.4, 0, 0.2, 1), opacity .35s ease;
+  z-index: 1000;
+  border: 1px solid var(--gold);
+  opacity: 0;
+  pointer-events: none;
+}
+
+.toast.show {
+  transform: translateX(-50%) translateY(0);
+  opacity: 1;
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 768px) {
+  .container { padding: 32px 20px; }
+  .header { flex-direction: column; gap: 20px; }
+  .header-right { text-align: left; }
+  .header-left h1 { font-size: 32px; }
+  .souk-logo-mark { height: 28px; }
+  .souk-logo-footer { height: 32px; }
+  .tabs { overflow-x: auto; margin: 0 -20px 32px; padding: 4px 20px 0; }
+  .tab { white-space: nowrap; padding-right: 24px; margin-right: 0; }
+  .tab.active::after { right: 16px; }
+  .manchete { padding: 24px 22px; }
+  .manchete-number { font-size: 60px; }
+  .manchete-number sup { font-size: 24px; }
+  .manchete-title { font-size: 20px; }
+  .manchete-comparison { flex-direction: column; gap: 16px; }
+  .metrics-grid { grid-template-columns: 1fr; }
+  .metric-number { font-size: 44px; }
+  .top-content { grid-template-columns: 1fr; }
+  .alerta-zero-cliques { grid-template-columns: 1fr; gap: 16px; padding: 24px 22px; }
+  .alerta-zero-num { font-size: 60px; }
+  .followers-block { grid-template-columns: 1fr; }
+  .leitura { padding: 32px 24px; }
+  .leitura h3 { font-size: 24px; }
+  .ponte h3 { font-size: 26px; }
+  .cause-effect-row { grid-template-columns: 1fr; gap: 12px; }
+  .cause-effect-arrow { font-size: 24px; transform: rotate(90deg); padding: 4px 0; }
+  .ponte-cta { flex-direction: column; align-items: flex-start; gap: 16px; }
+  .trafego-numbers { grid-template-columns: repeat(2, 1fr); }
+  .teste-grid { grid-template-columns: 1fr; }
+  .teste-title { font-size: 22px; }
+  .planning-stats { grid-template-columns: repeat(2, 1fr); }
+  .planning-stat { padding: 12px 0; }
+  .planning-stat:nth-child(2) { border-right: none; }
+  .planning-stat:nth-child(1), .planning-stat:nth-child(2) { border-bottom: 1px solid var(--gray-line); padding-bottom: 16px; margin-bottom: 16px; }
+  .card-header { grid-template-columns: 20px 1fr auto; gap: 10px; }
+  .card-date { display: none; }
+  .card-format { display: none; }
+  .card-actions { flex-direction: column; align-items: stretch; }
+  .action-btn { width: 100%; text-align: center; }
+}
+
+/* === SELOS DE CATEGORIA === */
+.selo {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-family: var(--sans);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 11px;
+  border-radius: 100px;
+  white-space: nowrap;
+  border: 1px solid transparent;
+}
+
+.selo::before {
+  content: '◆';
+  font-size: 7px;
+}
+
+.selo.promo {
+  background: var(--black);
+  color: var(--gold);
+  border-color: var(--black);
+}
+
+.selo.novidade {
+  background: var(--gold);
+  color: var(--black);
+  border-color: var(--gold);
+}
+
+.selo.receita {
+  background: #F4EFE5;
+  color: var(--black);
+  border-color: rgba(196, 162, 101, 0.3);
+}
+
+.selo.em-alta {
+  background: var(--white);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+.selo.em-alta::before {
+  content: '↗';
+  font-size: 10px;
+  font-weight: 700;
+}
+
+/* Selo dentro do card body — pra explicar */
+.card-selo-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 10px 14px;
+  background: var(--gray-bg);
+  border-radius: 8px;
+  font-size: 12px;
+  color: var(--gray-text);
+  line-height: 1.4;
+}
+
+.card-selo-info strong { color: var(--black); font-weight: 600; }
+
+/* === LEGENDA DE SELOS === */
+.selos-legenda {
+  margin-top: 24px;
+  margin-bottom: 32px;
+  padding: 24px 28px;
+  background: var(--gray-bg);
+  border-radius: 10px;
+}
+
+.selos-legenda-title {
+  font-family: var(--sans);
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 16px;
+}
+
+.selos-legenda-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 14px 24px;
+}
+
+.selo-legend-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.selo-legend-item .desc {
+  font-size: 12px;
+  color: var(--gray-text);
+  line-height: 1.5;
+}
+
+.selo-legend-item .desc strong {
+  color: var(--black);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 2px;
+}
+
+@media (max-width: 768px) {
+  .selos-legenda-grid { grid-template-columns: 1fr; }
+}
+
+
+/* === ADIÇÕES: SELETOR DE MÊS, ENVIO DE FEEDBACK, ESTADOS === */
+.month-select {
+  margin-top: 10px;
+  font-family: var(--sans);
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--black);
+  background: var(--white);
+  border: 1px solid var(--gray-line);
+  border-radius: 6px;
+  padding: 8px 12px;
+  cursor: pointer;
+  outline: none;
+}
+.month-select:hover { border-color: var(--gold-soft); }
+
+.loading-state, .error-state {
+  text-align: center;
+  padding: 120px 20px;
+  font-family: var(--sans);
+  color: var(--gray-text);
+}
+.loading-state .spinner {
+  width: 28px; height: 28px;
+  border: 2px solid var(--gray-line);
+  border-top-color: var(--gold);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: spin .8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+.error-state { color: var(--red); }
+
+.demo-banner {
+  background: var(--gold-bg);
+  border: 1px dashed var(--gold-soft);
+  border-radius: 8px;
+  padding: 12px 18px;
+  font-size: 13px;
+  color: var(--gray-text);
+  margin-bottom: 32px;
+}
+
+.send-feedback-section {
+  margin-top: 56px;
+  padding: 32px;
+  background: var(--gray-bg);
+  border-radius: 12px;
+  text-align: center;
+}
+.send-feedback-section .geral-label {
+  font-size: 12px;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  color: var(--gray-soft);
+  margin-bottom: 10px;
+  text-align: left;
+}
+.send-feedback-section textarea {
+  width: 100%;
+  min-height: 70px;
+  border: 1px solid var(--gray-line);
+  border-radius: 8px;
+  padding: 12px 14px;
+  font-family: var(--sans);
+  font-size: 14px;
+  resize: vertical;
+  margin-bottom: 8px;
+  outline: none;
+  box-sizing: border-box;
+}
+.send-feedback-section textarea:focus { border-color: var(--gold-soft); }
+.send-feedback-section input.autor-input {
+  width: 100%;
+  border: 1px solid var(--gray-line);
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-family: var(--sans);
+  font-size: 14px;
+  margin-bottom: 20px;
+  outline: none;
+  box-sizing: border-box;
+}
+.send-feedback-btn {
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: .5px;
+  color: var(--white);
+  background: var(--black);
+  border: none;
+  border-radius: 8px;
+  padding: 16px 40px;
+  cursor: pointer;
+  transition: background .2s ease, transform .1s ease;
+}
+.send-feedback-btn:hover { background: var(--gold); }
+.send-feedback-btn:disabled { opacity: .5; cursor: wait; }
+.send-hint { font-size: 12px; color: var(--gray-soft); margin-top: 12px; }
+.sent-badge {
+  display: inline-block;
+  background: var(--green-bg);
+  color: var(--green);
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  padding: 6px 14px;
+  margin-top: 14px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <div class="loading-state" id="loading">
+    <div class="spinner"></div>
+    Carregando dashboard...
+  </div>
+
+  <div class="error-state" id="error" style="display:none;"></div>
+
+  <div id="app" style="display:none;">
+
+    <header class="header">
+      <div class="header-left">
+        <img src="souk-logo.png" alt="Souk" class="souk-logo-mark">
+        <h1 id="cliente-nome"></h1>
+        <div class="subtitle" id="cliente-subtitulo"></div>
+      </div>
+      <div class="header-right">
+        Relatório referente a
+        <div class="period" id="periodo"></div>
+        <select class="month-select" id="month-select" title="Consultar outros meses"></select>
+      </div>
+    </header>
+
+    <div class="demo-banner" id="demo-banner" style="display:none;">
+      <strong>Modo demonstração</strong> — exibindo dados de exemplo. Configure a URL da planilha no topo do arquivo (API_URL) para conectar os dados reais.
+    </div>
+
+    <nav class="tabs" id="tabs">
+      <button class="tab active" data-tab="relatorio"><span class="tab-num">i</span>Relatório</button>
+      <button class="tab" data-tab="trafego" id="tab-btn-trafego"><span class="tab-num">ii</span>Tráfego pago</button>
+      <button class="tab" data-tab="planejamento"><span class="tab-num">iii</span>Planejamento</button>
+    </nav>
+
+    <section id="tab-relatorio" class="tab-pane active"></section>
+    <section id="tab-trafego" class="tab-pane"></section>
+    <section id="tab-planejamento" class="tab-pane"></section>
+
+    <footer class="footer">
+      <img src="souk-logo.png" alt="Souk" class="souk-logo-footer">
+      <div class="footer-meta" id="footer-meta"></div>
+    </footer>
+
+  </div>
+</div>
+
+<div class="toast" id="toast">Feedback enviado</div>
+
+<script>
+/* ============================================================
+   CONFIGURAÇÃO — única coisa que precisa ser editada aqui.
+   Cole a URL do app da web do Apps Script (termina em /exec).
+   ============================================================ */
+const API_URL = 'https://script.google.com/macros/s/AKfycbzSR1p8_aD__813Xg5N2Pw0TeLEZ2q1piFRRPHNt8MMzIUYRyycj_1-K1p-oWSbrNMK/exec';
+
+/* ============================================================ */
+
+const MESES_PT = ['Janeiro','Fevereiro','Março','Abril','Maio','Junho','Julho','Agosto','Setembro','Outubro','Novembro','Dezembro'];
+const params = new URLSearchParams(location.search);
+const CLIENTE = (params.get('cliente') || 'feito').toLowerCase();
+let MES = params.get('mes') || '';
+let DATA = null;
+
+function nomeMes(m) {
+  const [ano, mes] = m.split('-');
+  return MESES_PT[parseInt(mes,10)-1] + ' ' + ano;
+}
+function esc(s) {
+  return String(s == null ? '' : s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+/* permite **negrito** vindo da planilha */
+function rich(s) {
+  return esc(s).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+}
+function paragrafos(s) {
+  return String(s || '').split(/\n+|\s*\|\|\s*/).filter(p => p.trim())
+    .map(p => `<p>${rich(p)}</p>`).join('');
+}
+function seloClass(nome) {
+  const slug = String(nome||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'').replace(/\s+/g,'-');
+  return ['promo','novidade','receita','em-alta'].includes(slug) ? slug : 'em-alta';
+}
+
+/* ============ CARREGAMENTO ============ */
+async function carregar() {
+  try {
+    if (!API_URL) {
+      DATA = DEMO_DATA;
+      document.getElementById('demo-banner').style.display = 'block';
+    } else {
+      const url = `${API_URL}?cliente=${encodeURIComponent(CLIENTE)}${MES ? '&mes='+encodeURIComponent(MES) : ''}`;
+      const res = await fetch(url);
+      DATA = await res.json();
+      if (!DATA.ok) throw new Error(DATA.erro || 'Dados não encontrados');
+    }
+    MES = DATA.mes;
+    render();
+  } catch (e) {
+    document.getElementById('loading').style.display = 'none';
+    const el = document.getElementById('error');
+    el.style.display = 'block';
+    el.textContent = 'Não foi possível carregar o dashboard: ' + e.message;
+  }
+}
+
+/* ============ RENDER ============ */
+function render() {
+  const d = DATA;
+  document.title = `Dashboard Souk — ${d.cliente.nome} · ${nomeMes(MES)}`;
+  document.getElementById('cliente-nome').innerHTML = formatNome(d.cliente.nome);
+  document.getElementById('cliente-subtitulo').textContent = d.cliente.subtitulo || '';
+  document.getElementById('periodo').textContent = nomeMes(MES);
+  document.getElementById('footer-meta').textContent = `${d.cliente.nome} · ${nomeMes(MES)}`;
+
+  const sel = document.getElementById('month-select');
+  sel.innerHTML = (d.meses || [MES]).map(m =>
+    `<option value="${m}" ${m===MES?'selected':''}>${nomeMes(m)}</option>`).join('');
+  sel.onchange = () => {
+    const u = new URL(location.href);
+    u.searchParams.set('cliente', CLIENTE);
+    u.searchParams.set('mes', sel.value);
+    location.href = u.toString();
+  };
+
+  renderRelatorio(d);
+  renderTrafego(d);
+  renderPlanejamento(d);
+  restaurarRascunho();
+
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('app').style.display = 'block';
+}
+
+/* destaca a última palavra do nome em itálico dourado, como no design original */
+function formatNome(nome) {
+  const partes = String(nome).trim().split(' ');
+  if (partes.length === 1) return esc(nome);
+  const ultima = partes.pop();
+  return `${esc(partes.join(' '))} <em>${esc(ultima)}</em>`;
+}
+
+function renderRelatorio(d) {
+  let html = '';
+  const m = d.manchete;
+  if (m && m.titulo) {
+    html += `
+    <div class="manchete">
+      <div class="manchete-label">${esc(m.label || 'Destaque do mês')}</div>
+      <div class="manchete-number">${esc(m.numero)}<sup>${esc(m.sufixo || '')}</sup></div>
+      <div class="manchete-title">${rich(m.titulo)}</div>
+      <div class="manchete-body">${rich(m.corpo)}</div>
+      ${(m.comp1_label || m.comp2_label || m.comp3_label) ? `
+      <div class="manchete-comparison">
+        ${[1,2,3].map(i => m['comp'+i+'_label'] ? `
+        <div>
+          <div class="label">${esc(m['comp'+i+'_label'])}</div>
+          <div class="value" ${i===3?'style="font-size:15px; font-style:italic; line-height:1.5;"':''}>${esc(m['comp'+i+'_valor'])}</div>
+        </div>` : '').join('')}
+      </div>` : ''}
+    </div>`;
+  }
+
+  if (d.metricas && d.metricas.length) {
+    html += `
+    <div class="section">
+      <h2 class="section-title">Os ${d.metricas.length} números <em>que importam</em></h2>
+      <div class="metrics-grid">
+        ${d.metricas.map(mt => `
+        <div class="metric">
+          <div class="metric-header">
+            <div class="metric-label">${esc(mt.label)}</div>
+            ${mt.delta_texto ? `<div class="metric-delta ${esc(mt.delta_direcao || 'neutral')}">${esc(mt.delta_texto)}</div>` : ''}
+          </div>
+          <div class="metric-number">${esc(mt.valor)}${mt.sufixo ? `<span style="font-size:32px;">${esc(mt.sufixo)}</span>` : ''}</div>
+          <div class="metric-previous">${esc(mt.contexto)}</div>
+          ${mt.explicacao ? `<div class="metric-explain">${rich(mt.explicacao)}</div>` : ''}
+          ${mt.insight ? `<div class="metric-insight">${rich(mt.insight)}</div>` : ''}
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  if (d.top_posts && d.top_posts.length) {
+    html += `
+    <div class="section">
+      <h2 class="section-title">O que <em>funcionou</em> nesse mês</h2>
+      <div class="top-content">
+        ${d.top_posts.map(t => `
+        <div class="top-card">
+          <div class="top-card-label">${esc(t.etiqueta)}</div>
+          ${t.formato ? `<span class="top-card-format">${esc(t.formato)}</span>` : ''}
+          <div class="top-card-title">${esc(t.titulo)}</div>
+          ${t.publicado_em ? `<div class="top-card-author">${esc(t.publicado_em)}</div>` : ''}
+          <div class="top-card-stats">
+            ${[1,2,3].map(i => t['stat'+i+'_num'] ? `
+            <div class="top-card-stat">
+              <div class="num">${esc(t['stat'+i+'_num'])}</div>
+              <div class="label">${esc(t['stat'+i+'_label'])}</div>
+            </div>` : '').join('')}
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  if (d.causa_efeito && d.causa_efeito.length) {
+    html += `
+    <div class="section">
+      <h2 class="section-title">Movimento de <em>estratégia</em></h2>
+      <div class="cause-effect">
+        ${d.causa_efeito.map(c => `
+        <div class="cause-effect-row">
+          <div class="cause">
+            <div class="cause-label">O dado</div>
+            <div class="cause-text">${rich(c.dado)}</div>
+          </div>
+          <div class="cause-effect-arrow">→</div>
+          <div class="effect">
+            <div class="effect-label">A decisão</div>
+            <div class="effect-text">${rich(c.decisao)}</div>
+          </div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  document.getElementById('tab-relatorio').innerHTML = html ||
+    '<p style="color:var(--gray-text); padding:40px 0;">Relatório deste mês ainda não disponível.</p>';
+}
+
+function renderTrafego(d) {
+  const temTrafego = (d.trafego_numeros && d.trafego_numeros.length) || (d.trafego_diagnosticos && d.trafego_diagnosticos.length);
+  document.getElementById('tab-btn-trafego').style.display = temTrafego ? '' : 'none';
+  if (!temTrafego) { document.getElementById('tab-trafego').innerHTML = ''; return; }
+
+  let html = `
+    <h2 class="section-title">Tráfego pago · <em>análise</em></h2>
+    <p class="trafego-intro">${rich(d.textos && d.textos.trafego_intro || 'Análise do último ciclo de campanhas pagas.')}</p>`;
+
+  if (d.trafego_numeros && d.trafego_numeros.length) {
+    html += `
+    <div class="trafego-numbers">
+      ${d.trafego_numeros.map(n => `
+      <div class="trafego-num-item">
+        <div class="label">${esc(n.label)}</div>
+        <div class="num">${esc(n.valor)}</div>
+        ${n.delta_texto ? `<div class="delta delta-${esc(n.delta_direcao || 'up')}">${esc(n.delta_texto)}</div>` : ''}
+      </div>`).join('')}
+    </div>`;
+  }
+
+  if (d.trafego_diagnosticos && d.trafego_diagnosticos.length) {
+    html += `
+    <div class="trafego-diagnosis-header"><h4>Diagnóstico</h4></div>
+    <div class="diagnosis-grid">
+      ${d.trafego_diagnosticos.map(g => `
+      <div class="diagnosis-card">
+        <div class="diagnosis-card-header" style="justify-content:flex-end;">
+          <span class="diagnosis-card-tag ${esc(g.tom || 'positive')}">${esc(g.tag)}</span>
+        </div>
+        ${paragrafos(g.texto)}
+      </div>`).join('')}
+    </div>`;
+  }
+
+  document.getElementById('tab-trafego').innerHTML = html;
+}
+
+function renderPlanejamento(d) {
+  let html = `<h2 class="section-title">Planejamento <em>${nomeMes(MES)}</em></h2>`;
+
+  if (d.textos && d.textos.planejamento_intro) {
+    html += `<p class="planning-intro">${rich(d.textos.planejamento_intro)}</p>`;
+  }
+
+  if (d.selos && d.selos.length) {
+    html += `
+    <div class="selos-legenda">
+      <div class="selos-legenda-title">Identidade visual · selos de categoria</div>
+      <div class="selos-legenda-grid">
+        ${d.selos.map(s => `
+        <div class="selo-legend-item">
+          <span class="selo ${seloClass(s.nome)}">${esc(s.nome)}</span>
+          <div class="desc"><strong>${esc(s.titulo)}</strong> ${esc(s.descricao)}</div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  const posts = d.planejamento || [];
+  if (posts.length) {
+    /* estatísticas calculadas automaticamente */
+    const porSelo = {};
+    posts.forEach(p => { if (p.selo) porSelo[p.selo] = (porSelo[p.selo]||0)+1; });
+    const topSelos = Object.entries(porSelo).sort((a,b)=>b[1]-a[1]).slice(0,3);
+    html += `
+    <div class="planning-stats">
+      <div class="planning-stat"><div class="num">${posts.length}</div><div class="label">Conteúdos</div></div>
+      ${topSelos.map(([nome,n]) => `<div class="planning-stat"><div class="num">${n}</div><div class="label">${esc(nome)}</div></div>`).join('')}
+    </div>`;
+
+    /* agrupar por semana */
+    const semanas = [];
+    posts.forEach(p => {
+      let s = semanas.find(x => x.num === p.semana_num);
+      if (!s) { s = { num: p.semana_num, periodo: p.semana_periodo, label: p.semana_label, posts: [] }; semanas.push(s); }
+      s.posts.push(p);
+    });
+
+    semanas.forEach(s => {
+      html += `
+      <div class="semana-header">
+        Semana ${esc(s.num)}${s.periodo ? ' · ' + esc(s.periodo) : ''}
+        ${s.label ? `<span class="semana-label">${esc(s.label)}</span>` : ''}
+      </div>
+      <div class="content-list">
+        ${s.posts.map(p => `
+        <div class="content-card approved" data-id="${esc(p.id)}">
+          <div class="card-header" onclick="toggleCard(this)">
+            <div class="card-status-dot"></div>
+            <div class="card-date">${esc(p.data)}</div>
+            <div class="card-title">${esc(p.titulo)}</div>
+            <div class="card-format">
+              ${p.formato ? `<span class="format-tag">${esc(p.formato)}</span>` : ''}
+              ${p.selo ? `<span class="selo ${seloClass(p.selo)}">${esc(p.selo)}</span>` : ''}
+            </div>
+            <div class="card-toggle">▾</div>
+          </div>
+          <div class="card-body">
+            ${p.responde_a ? `<div class="responds-badge">Responde a: ${esc(p.responde_a)}</div>` : ''}
+            <div class="angle-label">Ângulo</div>
+            <div class="angle-text">${rich(p.angulo)}</div>
+            <div class="card-actions">
+              <button class="action-btn approve active" onclick="setStatus(event, this, 'approved')">✓ Aprovado</button>
+              <button class="action-btn reject" onclick="setStatus(event, this, 'rejected')">✗ Reprovado</button>
+              <textarea class="feedback-area" placeholder="Conte o que precisa ajustar..." oninput="salvarRascunho()"></textarea>
+            </div>
+          </div>
+        </div>`).join('')}
+      </div>`;
+    });
+  }
+
+  if (d.videos_pendentes && d.videos_pendentes.length) {
+    html += `
+    <div class="videos-pending-section">
+      <div class="videos-pending-label">Vídeos planejados pendentes</div>
+      <div class="videos-pending-list">
+        ${d.videos_pendentes.map(v => `
+        <div class="video-pending-item">
+          <div class="video-pending-dot"></div>
+          <div class="video-pending-format">${esc(v.formato || 'Vídeo')}</div>
+          <div class="video-pending-title">${esc(v.titulo)}</div>
+          <div class="video-pending-status">${esc(v.status || 'A gravar')}</div>
+        </div>`).join('')}
+      </div>
+    </div>`;
+  }
+
+  if (posts.length) {
+    html += `
+    <div class="send-feedback-section">
+      <div class="geral-label">Comentário geral (opcional)</div>
+      <textarea id="feedback-geral" placeholder="Alguma observação sobre o planejamento como um todo?" oninput="salvarRascunho()"></textarea>
+      <input class="autor-input" id="feedback-autor" placeholder="Seu nome" oninput="salvarRascunho()">
+      <button class="send-feedback-btn" id="send-btn" onclick="enviarFeedback()">Enviar feedback pra Souk</button>
+      <div class="send-hint">Suas aprovações e comentários vão direto pra equipe — não precisa copiar nada.</div>
+      <div id="sent-info"></div>
+    </div>`;
+  }
+
+  document.getElementById('tab-planejamento').innerHTML = html;
+
+  /* marca cards com feedback já enviado anteriormente */
+  (DATA.feedbacks || []).forEach(f => {
+    const card = document.querySelector(`.content-card[data-id="${f.post_id}"]`);
+    if (!card) return;
+    aplicarStatus(card, f.status === 'reprovado' ? 'rejected' : 'approved');
+    if (f.comentario) card.querySelector('.feedback-area').value = f.comentario;
+  });
+}
+
+/* ============ INTERAÇÕES ============ */
+document.querySelectorAll('.tab[data-tab]').forEach(tab => {
+  tab.addEventListener('click', () => switchTab(tab.dataset.tab));
+});
+function switchTab(name) {
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.tab-pane').forEach(p => p.classList.remove('active'));
+  document.querySelector(`.tab[data-tab="${name}"]`).classList.add('active');
+  document.getElementById(`tab-${name}`).classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+function toggleCard(el) {
+  el.closest('.content-card').classList.toggle('expanded');
+}
+function aplicarStatus(card, status) {
+  card.classList.remove('approved','rejected');
+  card.querySelector('.action-btn.approve').classList.remove('active');
+  card.querySelector('.action-btn.reject').classList.remove('active');
+  card.classList.add(status);
+  card.querySelector(`.action-btn.${status === 'approved' ? 'approve' : 'reject'}`).classList.add('active');
+}
+function setStatus(ev, btn, status) {
+  ev.stopPropagation();
+  aplicarStatus(btn.closest('.content-card'), status);
+  salvarRascunho();
+}
+
+/* ============ RASCUNHO LOCAL ============ */
+function chaveRascunho() { return `souk-fb-${CLIENTE}-${MES}`; }
+function salvarRascunho() {
+  const itens = {};
+  document.querySelectorAll('.content-card').forEach(c => {
+    itens[c.dataset.id] = {
+      s: c.classList.contains('rejected') ? 'r' : 'a',
+      c: c.querySelector('.feedback-area').value
+    };
+  });
+  localStorage.setItem(chaveRascunho(), JSON.stringify({
+    itens,
+    geral: (document.getElementById('feedback-geral')||{}).value || '',
+    autor: (document.getElementById('feedback-autor')||{}).value || ''
+  }));
+}
+function restaurarRascunho() {
+  try {
+    const r = JSON.parse(localStorage.getItem(chaveRascunho()) || 'null');
+    if (!r) return;
+    Object.entries(r.itens || {}).forEach(([id, v]) => {
+      const card = document.querySelector(`.content-card[data-id="${id}"]`);
+      if (!card) return;
+      aplicarStatus(card, v.s === 'r' ? 'rejected' : 'approved');
+      if (v.c) card.querySelector('.feedback-area').value = v.c;
+    });
+    if (r.geral && document.getElementById('feedback-geral')) document.getElementById('feedback-geral').value = r.geral;
+    if (r.autor && document.getElementById('feedback-autor')) document.getElementById('feedback-autor').value = r.autor;
+  } catch(e) {}
+}
+
+/* ============ ENVIO ============ */
+async function enviarFeedback() {
+  const btn = document.getElementById('send-btn');
+  const itens = [];
+  document.querySelectorAll('.content-card').forEach(c => {
+    itens.push({
+      id: c.dataset.id,
+      data: c.querySelector('.card-date').innerText.trim(),
+      titulo: c.querySelector('.card-title').innerText.trim(),
+      status: c.classList.contains('rejected') ? 'reprovado' : 'aprovado',
+      comentario: c.querySelector('.feedback-area').value.trim()
+    });
+  });
+  const payload = {
+    tipo: 'feedback',
+    cliente: CLIENTE,
+    mes: MES,
+    autor: document.getElementById('feedback-autor').value.trim(),
+    geral: document.getElementById('feedback-geral').value.trim(),
+    itens
+  };
+
+  if (!API_URL) {
+    mostrarToast('Modo demonstração — feedback não enviado');
+    return;
+  }
+
+  btn.disabled = true;
+  btn.textContent = 'Enviando...';
+  try {
+    const res = await fetch(API_URL, {
+      method: 'POST',
+      headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(payload)
+    });
+    const out = await res.json();
+    if (!out.ok) throw new Error(out.erro || 'erro desconhecido');
+    localStorage.removeItem(chaveRascunho());
+    document.getElementById('sent-info').innerHTML = '<div class="sent-badge">✓ Feedback recebido pela Souk</div>';
+    mostrarToast('Feedback enviado com sucesso');
+  } catch (e) {
+    mostrarToast('Erro ao enviar — tente de novo');
+  } finally {
+    btn.disabled = false;
+    btn.textContent = 'Enviar feedback pra Souk';
+  }
+}
+
+function mostrarToast(msg) {
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.classList.add('show');
+  setTimeout(() => t.classList.remove('show'), 3000);
+}
+
+/* ============ DADOS DE DEMONSTRAÇÃO ============ */
+const DEMO_DATA = {
+  ok: true,
+  mes: '2026-07',
+  meses: ['2026-06', '2026-07'],
+  cliente: { slug: 'feito', nome: 'Feito Chocolate', subtitulo: 'Distribuidora de chocolate e insumos para confeitaria' },
+  manchete: {
+    label: 'Destaque do mês', numero: '100', sufixo: '%',
+    titulo: 'Com 1.510 visualizações, 100% das views do período vieram de um único post.',
+    corpo: 'O post estático em formato meme, com gancho de identificação direta com a confeiteira, concentrou 100% das visualizações do período.',
+    comp1_label: 'Visualizações', comp1_valor: '1.510',
+    comp2_label: '% do total do mês', comp2_valor: '100,00%',
+    comp3_label: 'Leitura estratégica', comp3_valor: 'Posts de identificação direta com a confeiteira continuam sendo o que mais traciona'
+  },
+  textos: {
+    trafego_intro: 'Análise técnica do último ciclo de campanhas pagas, com leitura dos números e hipóteses sobre os pontos de ajuste para o próximo ciclo.',
+    planejamento_intro: '15 conteúdos distribuídos ao longo do mês. Eixos: **inverno em Curitiba**, **conversão** e **engajamento**.'
+  },
+  metricas: [
+    { label: 'Alcance', valor: '11.465', contexto: 'Pessoas únicas alcançadas no mês', explicacao: '**11 mil pessoas viram pelo menos um conteúdo da Feito.** Volume saudável para o tamanho da operação.', insight: 'Alcance forte e consistente. O desafio segue sendo converter atenção em ação concreta.' },
+    { label: 'Taxa de engajamento', valor: '3,66', sufixo: '%', delta_texto: '↑ acima da média', delta_direcao: 'up', contexto: 'A média do Instagram fica entre 1% e 3%', explicacao: '**De cada 100 pessoas alcançadas, quase 4 reagiram.**', insight: 'Quem segue está prestando atenção. A audiência ativa continua qualificada.' }
+  ],
+  top_posts: [
+    { etiqueta: 'Post de maior alcance', formato: 'Estático · Meme', titulo: '"Dormindo? Não. Descansando? Também não..."', publicado_em: 'Postado em 07/05/2026 às 10:00', stat1_num: '1.510', stat1_label: 'Visualizações', stat2_num: '98', stat2_label: 'Curtidas' }
+  ],
+  causa_efeito: [
+    { dado: 'Post de identificação fez **100% das views** do mês.', decisao: 'Julho abre com 2 posts de meme/provocação pra reativar a comunidade.' }
+  ],
+  trafego_numeros: [
+    { label: 'Alcance', valor: '6.534', delta_texto: '↓ -5,85%', delta_direcao: 'down' },
+    { label: 'Mensagens (leads)', valor: '193', delta_texto: '↑ +112,09%', delta_direcao: 'up' },
+    { label: 'Custo / lead', valor: 'R$ 1,37', delta_texto: '↓ -54,27%', delta_direcao: 'up' }
+  ],
+  trafego_diagnosticos: [
+    { tag: 'Ótimo · Leads dobraram', tom: 'positive', texto: 'O número que define sucesso comercial mais que dobrou: **193 mensagens iniciadas (+112,09%)** contra 91 do mês anterior. || O custo por lead caiu pela metade (R$ 1,37, -54,27%).' }
+  ],
+  selos: [
+    { nome: 'Promo', titulo: 'Oferta, produto em destaque, kit pra montar.', descricao: 'Sinaliza o que está em condição comercial agora.' },
+    { nome: 'Em Alta', titulo: 'Pauta quente do mercado, tendência.', descricao: 'Notícia que a confeiteira precisa estar por dentro.' }
+  ],
+  planejamento: [
+    { id: '01', semana_num: '1', semana_periodo: '01 a 03/07', semana_label: 'Abertura · Inverno + portfólio', data: '01/07 · qua', titulo: '[Vídeo 1]', formato: 'Vídeo', selo: 'Em Alta', responde_a: 'post de identificação fez 100%', angulo: 'Espaço separado para vídeo (usar o material do drive).' },
+    { id: '02', semana_num: '1', semana_periodo: '01 a 03/07', semana_label: 'Abertura · Inverno + portfólio', data: '02/07 · qui', titulo: '3 marcas que não podem faltar na sua produção de inverno', formato: 'Carrossel', selo: 'Promo', responde_a: 'post de promo +36,47%', angulo: 'Carrossel comercial com 3 marcas-âncora pro inverno. Curadoria + venda direta.' },
+    { id: '03', semana_num: '2', semana_periodo: '06 a 10/07', semana_label: 'Inverno + autoridade técnica', data: '06/07 · seg', titulo: 'O que seria do confeiteiro no inverno sem esses produtos?', formato: 'Feed', selo: 'Em Alta', responde_a: 'sazonalidade inverno Curitiba', angulo: 'Provocação que abre a série de conteúdos sazonais.' }
+  ],
+  videos_pendentes: [
+    { formato: 'Vídeo', titulo: '3 erros silenciosos que mais geram prejuízos na confeitaria', status: 'A gravar' }
+  ],
+  feedbacks: []
+};
+
+carregar();
+</script>
+</body>
+</html>
