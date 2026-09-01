@@ -141,6 +141,7 @@ body {
 }
 
 .tab:hover:not(.active):not(:disabled) { color: var(--black); }
+.tab:disabled { opacity: .42; cursor: not-allowed; }
 .tab.active { color: var(--black); }
 
 .tab.active::after {
@@ -1916,29 +1917,29 @@ body {
     </div>
     <div class="header-right">
       Relatório referente a
-      <div class="period">15/06/2026 — 15/07/2026</div>
+      <div class="period">16/07/2026 — 15/08/2026</div>
     </div>
   </header>
 
   <!-- ============ TABS ============ -->
   <nav class="tabs">
     <button class="tab active" data-tab="relatorio"><span class="tab-num">i</span>Relatório</button>
-    <button class="tab" data-tab="trafego"><span class="tab-num">ii</span>Tráfego pago</button>
-    <button class="tab" data-tab="planejamento"><span class="tab-num">iii</span>Planejamento</button>
+    <button class="tab" data-tab="trafego" disabled title="Bloqueado"><span class="tab-num">ii</span>Tráfego pago · bloqueado</button>
+    <button class="tab" data-tab="planejamento" disabled title="Planejamento aprovado"><span class="tab-num">iii</span>Planejamento · aprovado</button>
   </nav>
 
   <!-- ============================================================== -->
   <!-- ABA 1: RELATÓRIO                                                 -->
   <!-- ============================================================== -->
+  
   <section id="tab-relatorio" class="tab-pane active">
 
-    <!-- MANCHETE -->
     <div class="manchete">
       <div class="manchete-label">Destaque do período</div>
-      <div class="manchete-number">22<sup>×</sup></div>
-      <div class="manchete-title">Vinte e duas vezes mais gente viu a Taís esse mês.</div>
+      <div class="manchete-number">22,6<sup>×</sup></div>
+      <div class="manchete-title">O conteúdo da Taís chegou a quase 3 mil pessoas.</div>
       <div class="manchete-body">
-        <strong>2.935 pessoas</strong> foram alcançadas no período, contra 130 no anterior. É o maior salto que esse perfil já registrou, e ele veio de <strong>um recorte de conteúdo que a audiência reconheceu como dela</strong>. Curtidas, comentários e novos seguidores subiram junto — o mês foi de alta em todas as frentes.
+        O Instagram alcançou <strong>2.935 pessoas</strong>, ante 130 no período anterior. O salto de visibilidade veio acompanhado por uma média de <strong>27,67 interações por publicação</strong>. Agora, o desafio é transformar essa exposição em crescimento contínuo da comunidade.
       </div>
       <div class="manchete-comparison">
         <div>
@@ -1952,254 +1953,177 @@ body {
       </div>
     </div>
 
-    <!-- 3 NÚMEROS -->
     <div class="section">
-      <h2 class="section-title">Os 3 números <em>que importam</em></h2>
-
+      <h2 class="section-title">Os números <em>do período</em></h2>
       <div class="metrics-grid metrics-grid-3">
-
         <div class="metric">
           <div class="metric-header">
             <div class="metric-label">Alcance</div>
-            <div class="metric-delta up">+2.158%</div>
+            <div class="metric-delta up">+2.157,69%</div>
           </div>
           <div class="metric-number">2.935</div>
           <div class="metric-previous">Período anterior: 130</div>
-          <div class="metric-explain">Quase três mil pessoas viram algum conteúdo da Taís no período.</div>
+          <div class="metric-explain">A marca rompeu a base atual e chegou a um público muito maior.</div>
         </div>
-
         <div class="metric">
           <div class="metric-header">
-            <div class="metric-label">Novos seguidores</div>
-            <div class="metric-delta up">+44,44%</div>
+            <div class="metric-label">Seguidores</div>
+            <div class="metric-delta up">+0,46%</div>
           </div>
-          <div class="metric-number">13</div>
-          <div class="metric-previous">Período anterior: 9</div>
-          <div class="metric-explain">Gente nova chegando, em ritmo maior que no mês passado.</div>
+          <div class="metric-number">652</div>
+          <div class="metric-previous">Período anterior: 649</div>
+          <div class="metric-explain">O perfil encerrou o ciclo com três seguidores a mais.</div>
         </div>
-
         <div class="metric">
           <div class="metric-header">
-            <div class="metric-label">Taxa de engajamento</div>
-            <div class="metric-delta up">+100%</div>
+            <div class="metric-label">Começaram a seguir</div>
+            <div class="metric-delta down">−38,46%</div>
           </div>
-          <div class="metric-number">12,91</div>
-          <div class="metric-previous">O dobro do período anterior</div>
-          <div class="metric-explain"><strong>Está alta.</strong> Perfis desse porte costumam operar em um dígito.</div>
+          <div class="metric-number">8</div>
+          <div class="metric-previous">Período anterior: 13</div>
+          <div class="metric-explain">O alcance cresceu, mas ainda há espaço para converter mais visitas em seguidores.</div>
         </div>
-
       </div>
     </div>
 
-    <!-- ENGAJAMENTO -->
     <div class="section">
-      <h2 class="section-title">O engajamento <em>acompanhou</em></h2>
-
-      <div class="metrics-grid">
-
-        <div class="metric">
-          <div class="metric-header">
-            <div class="metric-label">Curtidas</div>
-            <div class="metric-delta up">+224,51%</div>
-          </div>
-          <div class="metric-number">331</div>
-          <div class="metric-previous">Período anterior: 102</div>
-          <div class="metric-explain">Mais que triplicou.</div>
-        </div>
-
-        <div class="metric">
-          <div class="metric-header">
-            <div class="metric-label">Comentários</div>
-            <div class="metric-delta up">+191,67%</div>
-          </div>
-          <div class="metric-number">35</div>
-          <div class="metric-previous">Período anterior: 12</div>
-          <div class="metric-explain">A audiência não só viu — ela respondeu.</div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- TOP CONTEÚDOS -->
-    <div class="section">
-      <h2 class="section-title">O que <em>funcionou</em> no período</h2>
-      <p class="section-subtitle">Os cinco conteúdos mais fortes do mês concentraram 300 das 366 interações.</p>
-
-      <div class="top-content">
-
-        <div class="top-card">
-          <div class="top-card-label">1º lugar</div>
-          <span class="top-card-format">Pessoal</span>
-          <div class="top-card-title">"Posso com tanta beleza?"</div>
-          <div class="top-card-author">O conteúdo do mês. Quase o dobro do segundo colocado.</div>
-          <div class="top-card-stats">
-            <div class="top-card-stat">
-              <div class="num">120</div>
-              <div class="label">Interações</div>
-            </div>
-            <div class="top-card-stat">
-              <div class="pct">33%</div>
-              <div class="label">Do engajamento do mês</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="top-card">
-          <div class="top-card-label">2º lugar</div>
-          <span class="top-card-format">Data do nicho</span>
-          <div class="top-card-title">"13 de Julho — Dia da Conscientização do TDAH"</div>
-          <div class="top-card-author">Data ocupada com posicionamento, não com homenagem.</div>
-          <div class="top-card-stats">
-            <div class="top-card-stat">
-              <div class="num">69</div>
-              <div class="label">Interações</div>
-            </div>
-            <div class="top-card-stat">
-              <div class="pct">19%</div>
-              <div class="label">Do engajamento do mês</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="top-card">
-          <div class="top-card-label">3º lugar</div>
-          <span class="top-card-format">História</span>
-          <div class="top-card-title">"Quando recebi o diagnóstico da minha filha…"</div>
-          <div class="top-card-author">A história da Taís abrindo a porta.</div>
-          <div class="top-card-stats">
-            <div class="top-card-stat">
-              <div class="num">45</div>
-              <div class="label">Interações</div>
-            </div>
-            <div class="top-card-stat">
-              <div class="pct">12%</div>
-              <div class="label">Do engajamento do mês</div>
-            </div>
-          </div>
-        </div>
-
-        <div class="top-card">
-          <div class="top-card-label">4º e 5º lugar</div>
-          <span class="top-card-format">Identificação</span>
-          <div class="top-card-title">"Quando uma criança com TDAH não para quieta…" · "Eu sei que talvez você não acredite nisso…"</div>
-          <div class="top-card-author">Fecham o ranking na mesma linha.</div>
-          <div class="top-card-stats">
-            <div class="top-card-stat">
-              <div class="num">66</div>
-              <div class="label">Interações somadas</div>
-            </div>
-            <div class="top-card-stat">
-              <div class="pct">18%</div>
-              <div class="label">Do engajamento do mês</div>
-            </div>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- FACEBOOK -->
-    <div class="section">
-      <h2 class="section-title">Performance no <em>Facebook</em></h2>
-
+      <h2 class="section-title">Como a audiência <em>respondeu</em></h2>
+      <p class="section-subtitle">Leitura das três publicações detalhadas no relatório.</p>
       <div class="metrics-grid metrics-grid-3">
         <div class="metric">
           <div class="metric-header">
-            <div class="metric-label">Alcance total</div>
-            <div class="metric-delta up">+0,66%</div>
+            <div class="metric-label">Interações</div>
           </div>
-          <div class="metric-number">614</div>
-          <div class="metric-previous">Período anterior: 610</div>
+          <div class="metric-number">83</div>
+          <div class="metric-previous">79 curtidas + 4 comentários</div>
+          <div class="metric-explain">A soma das respostas registradas nas três publicações.</div>
         </div>
         <div class="metric">
           <div class="metric-header">
-            <div class="metric-label">Engajamentos</div>
-            <div class="metric-delta up">+50,00%</div>
+            <div class="metric-label">Média por post</div>
           </div>
-          <div class="metric-number">3</div>
-          <div class="metric-previous">Período anterior: 2</div>
+          <div class="metric-number">27,67</div>
+          <div class="metric-previous">3 publicações analisadas</div>
+          <div class="metric-explain">Cada conteúdo gerou, em média, quase 28 interações.</div>
         </div>
         <div class="metric">
           <div class="metric-header">
-            <div class="metric-label">Seguidores da página</div>
-            <div class="metric-delta neutral">0,00%</div>
+            <div class="metric-label">Engajamento público</div>
           </div>
-          <div class="metric-number">3</div>
-          <div class="metric-previous">Período anterior: 3</div>
-          <div class="metric-explain">O Facebook segue estável. A força do trabalho está no Instagram.</div>
+          <div class="metric-number">4,28%</div>
+          <div class="metric-previous">Maior taxa entre os perfis comparados</div>
+          <div class="metric-explain">A Taís liderou a comparação por taxa de engajamento público.</div>
+        </div>
+      </div>
+      <div class="metrics-grid" style="margin-top:20px;">
+        <div class="metric">
+          <div class="metric-header">
+            <div class="metric-label">Curtidas</div>
+            <div class="metric-delta down">−77,17%</div>
+          </div>
+          <div class="metric-number">79</div>
+          <div class="metric-previous">Período anterior: 346</div>
+        </div>
+        <div class="metric">
+          <div class="metric-header">
+            <div class="metric-label">Comentários</div>
+            <div class="metric-delta down">−89,19%</div>
+          </div>
+          <div class="metric-number">4</div>
+          <div class="metric-previous">Período anterior: 37</div>
         </div>
       </div>
     </div>
 
-    <!-- LEITURA -->
+    <div class="section">
+      <h2 class="section-title">O que <em>funcionou</em></h2>
+      <p class="section-subtitle">O ranking mostra que dores específicas e situações reconhecíveis da rotina geram mais resposta.</p>
+      <div class="top-content">
+        <div class="top-card">
+          <div class="top-card-label">1º lugar</div>
+          <span class="top-card-format">Dor específica</span>
+          <div class="top-card-title">“Meu filho com TDAH come o tempo todo.”</div>
+          <div class="top-card-author">Uma frase que traduz exatamente a preocupação vivida pela audiência.</div>
+          <div class="top-card-stats">
+            <div class="top-card-stat"><div class="num">33</div><div class="label">Interações</div></div>
+            <div class="top-card-stat"><div class="pct">30</div><div class="label">Curtidas</div></div>
+          </div>
+        </div>
+        <div class="top-card">
+          <div class="top-card-label">2º lugar</div>
+          <span class="top-card-format">Contexto de rotina</span>
+          <div class="top-card-title">“A volta às aulas NÃO começa no primeiro...”</div>
+          <div class="top-card-author">O calendário vira gancho para uma orientação aplicável à vida real.</div>
+          <div class="top-card-stats">
+            <div class="top-card-stat"><div class="num">27</div><div class="label">Interações</div></div>
+            <div class="top-card-stat"><div class="pct">27</div><div class="label">Curtidas</div></div>
+          </div>
+        </div>
+        <div class="top-card">
+          <div class="top-card-label">3º lugar</div>
+          <span class="top-card-format">Data afetiva</span>
+          <div class="top-card-title">“Neste Dia dos Pais, queremos abraçar e...”</div>
+          <div class="top-card-author">Uma mensagem afetiva conectada ao repertório das famílias.</div>
+          <div class="top-card-stats">
+            <div class="top-card-stat"><div class="num">23</div><div class="label">Interações</div></div>
+            <div class="top-card-stat"><div class="pct">22</div><div class="label">Curtidas</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="section">
+      <h2 class="section-title">Performance no <em>Facebook</em></h2>
+      <div class="metrics-grid metrics-grid-3">
+        <div class="metric">
+          <div class="metric-header"><div class="metric-label">Alcance total</div><div class="metric-delta down">−42,83%</div></div>
+          <div class="metric-number">351</div>
+          <div class="metric-previous">Período anterior: 614</div>
+        </div>
+        <div class="metric">
+          <div class="metric-header"><div class="metric-label">Impressões</div><div class="metric-delta down">−44,29%</div></div>
+          <div class="metric-number">366</div>
+          <div class="metric-previous">Sem impressões pagas</div>
+        </div>
+        <div class="metric">
+          <div class="metric-header"><div class="metric-label">Engajamentos</div><div class="metric-delta down">−33,33%</div></div>
+          <div class="metric-number">2</div>
+          <div class="metric-previous">Período anterior: 3</div>
+          <div class="metric-explain">A força da presença digital continua concentrada no Instagram.</div>
+        </div>
+      </div>
+    </div>
+
     <div class="leitura">
       <div class="leitura-label">Leitura do período</div>
-      <h3>O reposicionamento <em>pegou</em>.</h3>
+      <h3>Mais alcance. Agora, precisamos <em>reter essa atenção</em>.</h3>
       <div class="leitura-body">
-        <p>
-          Esse foi o melhor mês do perfil desde que começamos a medir. <strong>O alcance multiplicou por 22, as curtidas mais que triplicaram e os comentários quase triplicaram</strong> — tudo no mesmo período. E a taxa de engajamento fechou em 12,91, o dobro do mês anterior e bem acima do que se espera de um perfil desse tamanho.
-        </p>
-        <p>
-          Os cinco conteúdos mais fortes do mês são todos de história e identificação — e é isso que os torna valiosos: <strong>juntos, eles constroem o posicionamento da Taís</strong>. A nutricionista que não estudou a rotina atípica de fora, mas vive ela por dentro. <strong>É esse o caminho que setembro e outubro seguem.</strong>
-        </p>
+        <p>O principal avanço foi a distribuição: o perfil saiu de <strong>130 para 2.935 pessoas alcançadas</strong>. A Taís também registrou a maior taxa de engajamento público entre os perfis comparados, com <strong>4,28%</strong>.</p>
+        <p>Ao mesmo tempo, curtidas, comentários e novos seguidores ficaram abaixo do período anterior. Isso mostra que <strong>ser vista não basta: os conteúdos precisam criar motivos claros para seguir, salvar, compartilhar e conversar</strong>.</p>
+        <p>O post mais forte oferece a pista mais útil: <strong>uma dor específica, dita na linguagem da mãe e conectada diretamente ao TDAH</strong>. É esse grau de identificação que deve continuar guiando a comunicação.</p>
       </div>
     </div>
 
-    <!-- PONTE -->
     <div class="section" style="margin-top:64px;">
       <div class="ponte">
-        <div class="ponte-label">Do relatório para o planejamento</div>
-        <h3>O que o mês mostrou <em>vira decisão no bimestre</em></h3>
-
+        <div class="ponte-label">Próximos passos</div>
+        <h3>Transformar visibilidade em <em>comunidade</em></h3>
         <div class="cause-effect">
-
           <div class="cause-effect-row">
-            <div class="cause">
-              <div class="cause-label">O que o mês mostrou</div>
-              <div class="cause-text">Os cinco do topo são todos <em>história e identificação</em>.</div>
-            </div>
+            <div class="cause"><div class="cause-label">O dado</div><div class="cause-text">O alcance cresceu <em>22,6 vezes</em>.</div></div>
             <div class="cause-effect-arrow">→</div>
-            <div class="effect">
-              <div class="effect-label">A decisão do bimestre</div>
-              <div class="effect-text">O post-âncora é a história do diagnóstico da Bibi e da decisão de mudar o consultório inteiro.</div>
-              <div class="effect-posts">Aplica em <span>05</span></div>
-            </div>
+            <div class="effect"><div class="effect-label">A decisão</div><div class="effect-text">Aproveitar a distribuição com CTAs claros para seguir, salvar e compartilhar.</div></div>
           </div>
-
           <div class="cause-effect-row">
-            <div class="cause">
-              <div class="cause-label">O que o mês mostrou</div>
-              <div class="cause-text">O que conecta os melhores conteúdos é a Taís <em>vivendo a rotina atípica por dentro</em>.</div>
-            </div>
+            <div class="cause"><div class="cause-label">O dado</div><div class="cause-text">A entrada de novos seguidores caiu de <em>13 para 8</em>.</div></div>
             <div class="cause-effect-arrow">→</div>
-            <div class="effect">
-              <div class="effect-label">A decisão do bimestre</div>
-              <div class="effect-text">Vídeos com ela em primeira pessoa, falando direto com a mãe — e o método do consultório aparecendo como prova.</div>
-              <div class="effect-posts">Aplica em <span>01</span> <span>03</span> <span>07</span></div>
-            </div>
+            <div class="effect"><div class="effect-label">A decisão</div><div class="effect-text">Reforçar, em cada conteúdo, para quem é o perfil e qual transformação a pessoa encontrará ao acompanhar a Taís.</div></div>
           </div>
-
           <div class="cause-effect-row">
-            <div class="cause">
-              <div class="cause-label">O que o mês mostrou</div>
-              <div class="cause-text">O alcance multiplicou por <em>22</em>.</div>
-            </div>
+            <div class="cause"><div class="cause-label">O dado</div><div class="cause-text">A dor concreta sobre fome e TDAH liderou o período.</div></div>
             <div class="cause-effect-arrow">→</div>
-            <div class="effect">
-              <div class="effect-label">A decisão do bimestre</div>
-              <div class="effect-text">Ritmo mantido: 4 vídeos por mês, com datas fixas já definidas de setembro a outubro.</div>
-              <div class="effect-posts">Aplica em <span>todos</span></div>
-            </div>
+            <div class="effect"><div class="effect-label">A decisão</div><div class="effect-text">Priorizar situações específicas da rotina atípica, combinando identificação e orientação prática.</div></div>
           </div>
-
-        </div>
-
-        <div class="ponte-cta" onclick="switchTab('planejamento')">
-          <div class="ponte-cta-text">
-            <div class="label">Próxima aba</div>
-            <h4>Ver os 8 vídeos de setembro e outubro</h4>
-          </div>
-          <div class="ponte-cta-arrow">→</div>
         </div>
       </div>
     </div>
@@ -2227,231 +2151,13 @@ body {
   <!-- ============================================================== -->
   <!-- ABA 3: PLANEJAMENTO                                              -->
   <!-- ============================================================== -->
+  
   <section id="tab-planejamento" class="tab-pane">
-
-    <h2 class="section-title">Planejamento <em>Setembro + Outubro 2026</em></h2>
-    <p class="planning-intro">
-      8 vídeos distribuídos entre setembro e outubro, com a Taís falando em primeira pessoa.
-    </p>
-
-    <div class="planning-stats">
-      <div class="planning-stat">
-        <div class="num">8</div>
-        <div class="label">Vídeos</div>
-      </div>
-      <div class="planning-stat">
-        <div class="num">4</div>
-        <div class="label">Setembro</div>
-      </div>
-      <div class="planning-stat">
-        <div class="num">4</div>
-        <div class="label">Outubro</div>
-      </div>
-      <div class="planning-stat">
-        <div class="num">4</div>
-        <div class="label">Receitas</div>
-      </div>
+    <div class="trafego-bloqueado">
+      <div class="trafego-bloqueado-icon">✓</div>
+      <h2 class="trafego-bloqueado-title">Planejamento <em>aprovado</em></h2>
+      <p class="trafego-bloqueado-text">O planejamento de setembro e outubro já foi aprovado. Esta versão da dashboard mantém disponível somente o relatório do período.</p>
     </div>
-
-    <!-- SETEMBRO -->
-    <div class="semana-header">
-      Setembro · 2026
-    </div>
-
-    <div class="content-list">
-
-      <div class="content-card" data-id="01">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div class="card-status-dot"></div>
-          <div class="card-date">08/09 · ter</div>
-          <div class="card-title">Alguém te convenceu de que mãe de criança atípica precisa se anular para dar conta. Mas você pode cuidar da sua família sem deixar de cuidar de você.</div>
-          <div class="card-format">
-            <span class="format-tag">Vídeo</span>
-          </div>
-          <div class="card-toggle">▾</div>
-        </div>
-        <div class="card-body">
-          <div class="angle-label">Ângulo</div>
-          <div class="angle-text">Taís treinando crossfit, com a headline em lettering sobre o vídeo.</div>
-          <div class="card-actions">
-            <button class="action-btn approve active" onclick="setStatus(event, this, 'approved')">✓ Aprovado</button>
-            <button class="action-btn reject" onclick="setStatus(event, this, 'rejected')">✗ Reprovado</button>
-            <textarea class="feedback-area" placeholder="Conte o que precisa ajustar..."></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="content-card" data-id="02">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div class="card-status-dot"></div>
-          <div class="card-date">15/09 · ter</div>
-          <div class="card-title">Receita</div>
-          <div class="card-format">
-            <span class="format-tag">Vídeo</span>
-            <span class="format-tag">Receita</span>
-          </div>
-          <div class="card-toggle">▾</div>
-        </div>
-        <div class="card-body">
-          <div class="angle-label">Ângulo</div>
-          <div class="angle-text">Taís definir.</div>
-          <div class="card-actions">
-            <button class="action-btn approve active" onclick="setStatus(event, this, 'approved')">✓ Aprovado</button>
-            <button class="action-btn reject" onclick="setStatus(event, this, 'rejected')">✗ Reprovado</button>
-            <textarea class="feedback-area" placeholder="Conte o que precisa ajustar..."></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="content-card" data-id="03">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div class="card-status-dot"></div>
-          <div class="card-date">21/09 · seg</div>
-          <div class="card-title">3 perguntas que eu faço na primeira consulta e que nenhum outro nutricionista te fez</div>
-          <div class="card-format">
-            <span class="format-tag">Vídeo</span>
-          </div>
-          <div class="card-toggle">▾</div>
-        </div>
-        <div class="card-body">
-          <div class="angle-label">Ângulo</div>
-          <div class="angle-text">Aqui entra o método de organização dela. Cada pergunta revela que ela entende a rotina atípica (textura, horário de medicação, o que acontece depois da escola).</div>
-          <div class="card-actions">
-            <button class="action-btn approve active" onclick="setStatus(event, this, 'approved')">✓ Aprovado</button>
-            <button class="action-btn reject" onclick="setStatus(event, this, 'rejected')">✗ Reprovado</button>
-            <textarea class="feedback-area" placeholder="Conte o que precisa ajustar..."></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="content-card" data-id="04">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div class="card-status-dot"></div>
-          <div class="card-date">29/09 · ter</div>
-          <div class="card-title">Receita</div>
-          <div class="card-format">
-            <span class="format-tag">Vídeo</span>
-            <span class="format-tag">Receita</span>
-          </div>
-          <div class="card-toggle">▾</div>
-        </div>
-        <div class="card-body">
-          <div class="angle-label">Ângulo</div>
-          <div class="angle-text">Taís definir.</div>
-          <div class="card-actions">
-            <button class="action-btn approve active" onclick="setStatus(event, this, 'approved')">✓ Aprovado</button>
-            <button class="action-btn reject" onclick="setStatus(event, this, 'rejected')">✗ Reprovado</button>
-            <textarea class="feedback-area" placeholder="Conte o que precisa ajustar..."></textarea>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- OUTUBRO -->
-    <div class="semana-header">
-      Outubro · 2026
-    </div>
-
-    <div class="content-list">
-
-      <div class="content-card" data-id="05">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div class="card-status-dot"></div>
-          <div class="card-date">06/10 · ter</div>
-          <div class="card-title">Ninguém sabia me ajudar com a minha filha. Então eu virei essa pessoa.</div>
-          <div class="card-format">
-            <span class="format-tag">Vídeo</span>
-            <span class="format-tag">Post-âncora</span>
-          </div>
-          <div class="card-toggle">▾</div>
-        </div>
-        <div class="card-body">
-          <div class="angle-label">Ângulo</div>
-          <div class="angle-text">O post-âncora. Ela conta o diagnóstico da Bibi, a peregrinação por profissionais que sabiam a teoria e não sabiam a vida, e a decisão de mudar o consultório inteiro. Termina dizendo exatamente quem ela atende hoje.</div>
-          <div class="card-actions">
-            <button class="action-btn approve active" onclick="setStatus(event, this, 'approved')">✓ Aprovado</button>
-            <button class="action-btn reject" onclick="setStatus(event, this, 'rejected')">✗ Reprovado</button>
-            <textarea class="feedback-area" placeholder="Conte o que precisa ajustar..."></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="content-card" data-id="06">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div class="card-status-dot"></div>
-          <div class="card-date">12/10 · seg</div>
-          <div class="card-title">Receita</div>
-          <div class="card-format">
-            <span class="format-tag">Vídeo</span>
-            <span class="format-tag">Receita</span>
-            <span class="format-tag">Dia das Crianças</span>
-          </div>
-          <div class="card-toggle">▾</div>
-        </div>
-        <div class="card-body">
-          <div class="angle-label">Ângulo</div>
-          <div class="angle-text">Taís definir.</div>
-          <div class="card-actions">
-            <button class="action-btn approve active" onclick="setStatus(event, this, 'approved')">✓ Aprovado</button>
-            <button class="action-btn reject" onclick="setStatus(event, this, 'rejected')">✗ Reprovado</button>
-            <textarea class="feedback-area" placeholder="Conte o que precisa ajustar..."></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="content-card" data-id="07">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div class="card-status-dot"></div>
-          <div class="card-date">16/10 · sex</div>
-          <div class="card-title">Hoje é o Dia Mundial da Alimentação e eu quero falar com você, mãe.</div>
-          <div class="card-format">
-            <span class="format-tag">Vídeo</span>
-          </div>
-          <div class="card-toggle">▾</div>
-        </div>
-        <div class="card-body">
-          <div class="angle-label">Ângulo</div>
-          <div class="angle-text">A data vai estar tomada por nutricionista falando de comida de verdade, e ela fala da mãe que serve todo mundo, come o resto do prato da criança e almoça às 15h.</div>
-          <div class="card-actions">
-            <button class="action-btn approve active" onclick="setStatus(event, this, 'approved')">✓ Aprovado</button>
-            <button class="action-btn reject" onclick="setStatus(event, this, 'rejected')">✗ Reprovado</button>
-            <textarea class="feedback-area" placeholder="Conte o que precisa ajustar..."></textarea>
-          </div>
-        </div>
-      </div>
-
-      <div class="content-card" data-id="08">
-        <div class="card-header" onclick="toggleCard(this)">
-          <div class="card-status-dot"></div>
-          <div class="card-date">27/10 · ter</div>
-          <div class="card-title">Receita</div>
-          <div class="card-format">
-            <span class="format-tag">Vídeo</span>
-            <span class="format-tag">Receita</span>
-            <span class="format-tag">Dia das Crianças</span>
-          </div>
-          <div class="card-toggle">▾</div>
-        </div>
-        <div class="card-body">
-          <div class="angle-label">Ângulo</div>
-          <div class="angle-text">Taís definir.</div>
-          <div class="card-actions">
-            <button class="action-btn approve active" onclick="setStatus(event, this, 'approved')">✓ Aprovado</button>
-            <button class="action-btn reject" onclick="setStatus(event, this, 'rejected')">✗ Reprovado</button>
-            <textarea class="feedback-area" placeholder="Conte o que precisa ajustar..."></textarea>
-          </div>
-        </div>
-      </div>
-
-    </div>
-
-    <!-- COPY FEEDBACK -->
-    <div class="copy-feedback-section">
-      <button class="copy-feedback-btn" onclick="copyFeedback()">Copiar feedback</button>
-      <div class="copy-hint">Ao clicar, o resumo das suas aprovações e comentários será copiado.</div>
-    </div>
-
   </section>
 
   <!-- ============ FOOTER ============ -->
@@ -2476,7 +2182,7 @@ function switchTab(tabName) {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-document.querySelectorAll('.tab[data-tab]').forEach(tab => {
+document.querySelectorAll('.tab[data-tab]:not(:disabled)').forEach(tab => {
   tab.addEventListener('click', () => switchTab(tab.dataset.tab));
 });
 
@@ -2545,3 +2251,4 @@ function copyFeedback() {
 
 </body>
 </html>
+
